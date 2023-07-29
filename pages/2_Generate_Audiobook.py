@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title('🗣️ ParentParrot: Generate Audiobook')
+st.title('🗣️ NurtureLullaby: Generate Audiobook')
 
 
 st.header('Upload Text File')

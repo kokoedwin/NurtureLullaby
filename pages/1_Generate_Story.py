@@ -1,7 +1,8 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
 import openai
+from dotenv import load_dotenv
+
 
 
 #option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))

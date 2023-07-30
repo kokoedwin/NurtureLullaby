@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 import openai
 
-st.title('🗒️ NurtureLullaby: Generate Your Story')
 
 #option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
 
@@ -13,32 +12,42 @@ load_dotenv()
 # Set OpenAI API key
 openai.api_key = os.getenv('CHATGPT_API_KEY')
 
-def generate_story(prompt):
+def generate_story(age, gender, interests, story_type, moral, setting, characters, child_name):
     # Generate a story using ChatGPT
+    # You'll need to modify this function to use these inputs in the generation process
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": prompt}
+            {"role": "user", "content": f"Create a {story_type} story for a {age} year old {gender} who likes {interests}. The story should take place in {setting} and include characters like {characters}. The story should teach a lesson about {moral}."}
         ]
     )
 
     # Return the assistant's reply
     return response['choices'][0]['message']['content']
 
+
 def main():
     st.title('NurtureLullaby: Create Your Story')
 
-    st.header('Enter Your Story Prompt')
-    prompt = st.text_input('Start your story...')
+    st.header('Enter Story Details')
+    age = st.number_input('Age of the Child', min_value=1, max_value=18, value=5)
+    gender = st.selectbox('Gender of the Child', ['Male', 'Female'])
+    interests = st.text_input('Interests of the Child (optional)')
+    story_type = st.selectbox('Type of Story', ['Adventure', 'Fantasy', 'Mystery', 'Fairy Tale'])
+    moral = st.text_input('Moral or Lesson of the Story')
+    setting = st.text_input('Setting of the Story')
+    characters = st.text_input('Characters in the Story')
+    child_name = st.text_input('Name of the Child')
 
     if st.button('Generate Story'):
-        if prompt:
+        if age and gender and story_type and moral and setting and characters and child_name:
             st.write('Generating story...')
-            story = generate_story(prompt)
+            story = generate_story(age, gender, interests, story_type, moral, setting, characters, child_name)
             st.write(story)
         else:
-            st.write('Please enter a story prompt.')
+            st.write('Please enter all the story details.')
+
 
 if __name__ == "__main__":
     main()

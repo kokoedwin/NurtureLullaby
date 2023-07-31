@@ -1,8 +1,7 @@
 import streamlit as st
 import os
-import openai
 from dotenv import load_dotenv
-
+import openai
 
 
 #option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
@@ -39,11 +38,11 @@ def main():
     moral = st.text_input('Moral or Lesson of the Story')
     setting = st.text_input('Setting of the Story')
     characters = st.text_input('Characters in the Story')
-    child_name = st.text_input('Name of the Child')
+    child_name = st.text_input('Name of the Character')
 
     if st.button('Generate Story'):
         if age and gender and story_type and moral and setting and characters and child_name:
-            st.write('Generating story...')
+            #st.write('Generating story...')
             story = generate_story(age, gender, interests, story_type, moral, setting, characters, child_name)
             st.write(story)
         else:

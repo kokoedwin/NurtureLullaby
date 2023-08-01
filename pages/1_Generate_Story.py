@@ -1,14 +1,7 @@
 import streamlit as st
 import os
-#from dotenv import load_dotenv
 import openai
 
-
-#option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
-
-
-# Load environment variables from .env file
-#load_dotenv()
 # Set OpenAI API key
 openai.api_key = st.secrets["CHATGPT_API_KEY"]
 

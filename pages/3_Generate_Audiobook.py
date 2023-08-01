@@ -1,19 +1,12 @@
 import os
 import requests
 import streamlit as st
-#from dotenv import load_dotenv
 from elevenlabs import clone, generate, play, set_api_key
 import json
-
-# Load environment variables from .env file
-#load_dotenv()
 
 #set_api_key(os.getenv("XI_API_KEY"))
 CHUNK_SIZE = 1024
 
-
-#xi-api-key = os.getenv("XI_API_KEY")
-#  "cd608285bc2f22ed29bb0e13f74fadee"
 headers = {
   "Accept": "application/json",
   "xi-api-key": st.secrets["XI_API_KEY"]

@@ -1,3 +1,0 @@
-streamlit
-elevenlabs
-openai
